@@ -18,3 +18,5 @@ cat /var/lib/rancher/k3s/server/node-token
 
 
 echo "\nCopy this token.\n"
+
+echo "\nRun worker.sh"
