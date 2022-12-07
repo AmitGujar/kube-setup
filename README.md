@@ -6,3 +6,5 @@
 2. Make sure you have root access
 3. Note down your public ip address, master node
 4. Make that changes in start.sh script
+
+### Ignore secret.txt
