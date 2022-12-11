@@ -14,4 +14,7 @@ echo "\nExposing deployment.\n"
 
 kubectl expose deployment demopods-deployment --type=NodePort --name=expose-service
 
-echo "\nk3s setup is successful."
+echo "\nGetting Services"
+
+kubectl get svc
+
