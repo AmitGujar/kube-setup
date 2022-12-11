@@ -21,7 +21,7 @@ steps:
 - task: ShellScript@2
   inputs:
     failOnStandardError: true
-    scriptPath: '*.sh' 
+    scriptPath: 'start.sh' 
     #args: # string. Arguments. 
   # Advanced
     #disableAutoCwd: false # boolean. Specify Working Directory. Default: false.
