@@ -17,13 +17,3 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-
-- task: ShellScript@2
-  inputs:
-    failOnStandardError: true
-    scriptPath: 'start.sh' 
-    #args: # string. Arguments. 
-  # Advanced
-    #disableAutoCwd: false # boolean. Specify Working Directory. Default: false.
-    #cwd: # string. Optional. Use when disableAutoCwd = true. Working Directory. 
-    # # boolean. Fail on Standard Error. Default: false.
