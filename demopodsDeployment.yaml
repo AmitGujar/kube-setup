@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demopods-deployment
+  labels:
+    app: demopods
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demopods
+  template:
+    metadata:
+      labels:
+        app: demopods
+    spec:
+      containers:
+      - name: static-site
+        image: amitgujar/static-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
