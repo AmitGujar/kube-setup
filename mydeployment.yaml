@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    azure-pipelines/jobName: '"Agent job"'
+    azure-pipelines/org: https://dev.azure.com/MyInternalTesting/
+    azure-pipelines/pipeline: '"New release pipeline"'
+    azure-pipelines/pipelineId: '"1"'
+    azure-pipelines/project: AKS_Test
+    azure-pipelines/run: "10"
+    azure-pipelines/runuri: https://dev.azure.com/MyInternalTesting/AKS_Test/_releaseProgress?releaseId=10
+    deployment.kubernetes.io/revision: "3"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"mydeployment","namespace":"default"},"spec":{"replicas":10,"selector":{"matchLabels":{"app":"mydeployment"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"mydeployment"}},"spec":{"containers":[{"image":"amitgujar/cloudmigration:latest","name":"mydeployment","ports":[{"containerPort":80}]}]}}}}
+  creationTimestamp: "2023-09-21T09:47:20Z"
+  generation: 8
+  name: mydeployment
+  namespace: default
+  resourceVersion: "172438"
+  uid: eb39d0a3-c20d-4825-85f3-39db68606403
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 10
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: mydeployment
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeployment
+    spec:
+      containers:
+      - image: amitgujar/cloudmigration:latest
+        imagePullPolicy: Always
+        name: mydeployment
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 10
+  conditions:
+  - lastTransitionTime: "2023-09-21T09:47:20Z"
+    lastUpdateTime: "2023-09-22T05:07:35Z"
+    message: ReplicaSet "mydeployment-5bdb95d89" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2023-09-22T06:31:22Z"
+    lastUpdateTime: "2023-09-22T06:31:22Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 8
+  readyReplicas: 10
+  replicas: 10
+  updatedReplicas: 10

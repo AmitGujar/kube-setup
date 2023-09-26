@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: healthcheck-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: healthcheck-deployment
+  template:
+    metadata:
+      labels:
+        app: healthcheck-deployment
+    spec:
+      containers:
+      - name: healthcheck-deployment
+        image: amitgujar/cloudmigration:latest
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 15
+          periodSeconds: 3
+          timeoutSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 15
+          periodSeconds: 3
+          timeoutSeconds: 30
